@@ -2,7 +2,7 @@ name: Check Ampel Status
 
 on:
   schedule:
-    - cron: '*/10 * * * *' # läuft alle 10 Minuten
+    - cron: '0 8 * * *' # läuft alle 10 Minuten
 
 jobs:
   build:
