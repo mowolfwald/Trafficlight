@@ -4,18 +4,18 @@ import os
 import smtplib
 from email.mime.text import MIMEText
 
-def get_current_light():
-    url = "https://psychotherapie-mainz.de/kontakt/"
-    response = requests.get(url)
-    soup = BeautifulSoup(response.content, 'html.parser')
-    
-    section = soup.find('section', class_='elementor-section')
-    if section:
-        if 'rot' in section.get('class', []):
+url = "https://psychotherapie-mainz.de/kontakt/"
+response = requests.get(url)
+soup = BeautifulSoup(response.content, 'html.parser')
+
+def get_current_light(soup):
+    traffic_light = soup.find('div', class_='trafficLight')
+    if traffic_light:
+        if traffic_light.find('span', class_='red'):
             return 'rot'
-        elif 'gelb' in section.get('class', []):
+        elif traffic_light.find('span', class_='yellow'):
             return 'gelb'
-        elif 'gruen' in section.get('class', []):
+        elif traffic_light.find('span', class_='green'):
             return 'grün'
     return 'keine aktive Farbe gefunden'
 
@@ -37,5 +37,5 @@ def send_email_notification():
         server.sendmail(email_user, to_email, msg.as_string())
 
 if __name__ == "__main__":
-    if get_current_light() == 'rot':
+    if get_current_light(soup) == 'rot':
         send_email_notification()
