@@ -5,7 +5,7 @@ import smtplib
 from email.mime.text import MIMEText
 
 def get_current_light():
-    url = "URL_DER_WEBSITE"
+    url = "https://psychotherapie-mainz.de/kontakt/"
     response = requests.get(url)
     soup = BeautifulSoup(response.content, 'html.parser')
     
