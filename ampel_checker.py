@@ -4,7 +4,7 @@ import os
 import smtplib
 from email.mime.text import MIMEText
 
-url = "https://psychotherapie-mainz.de/kontakt/"
+url = os.getenv('WEBSITE')
 response = requests.get(url)
 soup = BeautifulSoup(response.content, 'html.parser')
 
