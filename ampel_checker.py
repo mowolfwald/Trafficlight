@@ -26,8 +26,8 @@ def send_email_notification():
     smtp_port = os.getenv('SMTP_PORT')
     to_email = os.getenv('TO_EMAIL')
     
-    msg = MIMEText('Die Ampel ist grün!')
-    msg['Subject'] = 'Ampel Status'
+    msg = MIMEText('Die Ampel ist grün! Call: 06131 3939100')
+    msg['Subject'] = 'Ampel Checker'
     msg['From'] = email_user
     msg['To'] = to_email
 
@@ -37,5 +37,5 @@ def send_email_notification():
         server.sendmail(email_user, to_email, msg.as_string())
 
 if __name__ == "__main__":
-    if get_current_light(soup) == 'rot':
+    if get_current_light(soup) == 'grün':
         send_email_notification()
