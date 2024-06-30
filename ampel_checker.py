@@ -37,5 +37,5 @@ def send_email_notification():
         server.sendmail(email_user, to_email, msg.as_string())
 
 if __name__ == "__main__":
-    if get_current_light(soup) == 'rot':
+    if get_current_light(soup) == 'grün':
         send_email_notification()
