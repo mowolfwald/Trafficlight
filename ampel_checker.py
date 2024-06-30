@@ -17,7 +17,7 @@ def get_current_light(soup):
             return 'gelb'
         elif traffic_light.find('span', class_='green'):
             return 'grün'
-    return 'keine aktive Farbe gefunden'
+    return 'farblos'
 
 def send_email_notification():
     email_user = os.getenv('EMAIL_USER')
