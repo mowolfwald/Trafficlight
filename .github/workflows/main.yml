@@ -30,4 +30,5 @@ jobs:
         SMTP_PORT: ${{ secrets.SMTP_PORT }}
         TO_EMAIL: ${{ secrets.TO_EMAIL }}
         WEBSITE: ${{ secrets.WEBSITE }}
+        PHONE: ${{ secrets.PHONE }}
       run: python ampel_checker.py
