@@ -26,7 +26,7 @@ def send_email_notification():
     smtp_port = os.getenv('SMTP_PORT')
     to_email = os.getenv('TO_EMAIL')
     
-    msg = MIMEText(paste0('Die Ampel ist grün! Call ', os.getenv('PHONE')))
+    msg = MIMEText("Die Ampel ist grün! Call {}".format(os.getenv('PHONE')))
     msg['Subject'] = 'Ampel Checker'
     msg['From'] = email_user
     msg['To'] = to_email
