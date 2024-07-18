@@ -9,13 +9,13 @@ response = requests.get(url)
 soup = BeautifulSoup(response.content, 'html.parser')
 
 def get_current_light(soup):
-    traffic_light = soup.find('div', class_='trafficLight')
-    if traffic_light:
-        if traffic_light.find('span', class_='red'):
+    section = soup.find('section', class_='elementor-section')
+    if section:
+        if 'rot' in section.get('class', []):
             return 'rot'
-        elif traffic_light.find('span', class_='yellow'):
+        elif 'gelb' in section.get('class', []):
             return 'gelb'
-        elif traffic_light.find('span', class_='green'):
+        elif 'gruen' in section.get('class', []):
             return 'grün'
     return 'farblos'
 
@@ -37,5 +37,5 @@ def send_email_notification():
         server.sendmail(email_user, to_email, msg.as_string())
 
 if __name__ == "__main__":
-    if get_current_light(soup) != 'rot':
+    if get_current_light(soup) == 'rot':
         send_email_notification()
