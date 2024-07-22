@@ -1,8 +1,5 @@
 name: Check Ampel Status
 
-on:
-  schedule:
-    - cron: 
 
 jobs:
   build:
