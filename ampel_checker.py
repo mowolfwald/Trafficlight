@@ -9,15 +9,15 @@ response = requests.get(url)
 soup = BeautifulSoup(response.content, 'html.parser')
 
 def get_current_light(soup):
-    section = soup.find('section', class_='elementor-section')
+    section = soup.find('section', {'data-id': 'efb6628'}, 'elementor-section')
     if section:
-        if 'rot' in section.get('class', []):
-            return 'rot'
-        elif 'gelb' in section.get('class', []):
-            return 'gelb'
-        elif 'gruen' in section.get('class', []):
-            return 'grün'
-    return 'farblos'
+        section_str = str(section)
+        if 'rot' in section_str in section_str:
+            return("rot")
+        elif 'grün' in section_str in section_str:
+            return("grün")
+        else:
+            return("farblos")
 
 def send_email_notification():
     email_user = os.getenv('EMAIL_USER')
@@ -37,5 +37,5 @@ def send_email_notification():
         server.sendmail(email_user, to_email, msg.as_string())
 
 if __name__ == "__main__":
-    if get_current_light(soup) == 'rot':
+    if get_current_light(soup) == 'grün':
         send_email_notification()
