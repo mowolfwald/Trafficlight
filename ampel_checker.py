@@ -12,9 +12,9 @@ def get_current_light(soup):
     section = soup.find('section', {'data-id': 'efb6628'}, 'elementor-section')
     if section:
         section_str = str(section)
-        if 'rot' in section_str in section_str:
+        if 'rot' in section_str:
             return("rot")
-        elif 'grün' in section_str in section_str:
+        elif 'grün' in section_str:
             return("grün")
         else:
             return("farblos")
